@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block date %} {{ today_date }} {% endblock %}
+{% block content %}
+<div class="grid-container">
+   <div class="grid-item">
+      <h2 class="title is-4">Task</h2>
+      <form action="/addTodo/" method="post">{% csrf_token %}
+         <input class="input is-rounded" type="text" style="width:15em;" name="content">
+      </form>
+      <br>
+      <br>
+      <ul>
+         {% for todo_item in all_todo_items %}
+         <li>{{ todo_item.content }} 
+            <a href="/deleteTodo/{{todo_item.id}}/"><i class="fa fa-check" aria-hidden="true"></i></a>
+         </li>
+         {% endfor %}
+      </ul>
+   </div>
+   <div class="grid-item">
+      <h2 class="title is-4">Books</h2>
+      <form action="/addBook/" method="post">{% csrf_token %}
+         <input class="input is-rounded" type="text" style="width:15em;" name="content">
+      </form>
+      <br>
+      <br>
+      <ul>
+         {% for book_item in all_book_items %}
+         <li>{{ book_item.content }}
+            <a href="/deleteBook/{{book_item.id}}/"><i class="fa fa-check" aria-hidden="true"></i></a>
+         </li>
+         {% endfor %}
+      </ul>
+   </div>
+   <div class="grid-item">
+      <h2 class="title is-4">Movies & TV Shows</h2>
+      <form action="/addBinge/" method="post">{% csrf_token %}
+         <input class="input is-rounded" type="text" style="width:15em;" name="content">
+      </form>
+      <br>
+      <br>
+      <ul>
+         {% for binge_item in all_binge_items %}
+         <li>{{ binge_item.content }}
+            <a href="/deleteBinge/{{binge_item.id}}/"><i class="fa fa-check" aria-hidden="true"></i></a>
+         </li>
+         {% endfor %}
+      </ul>
+   </div>
+   <div class="grid-item">
+      <h2 class="title is-4">Music</h2>
+      <form action="/addMusic/" method="post">{% csrf_token %}
+         <input class="input is-rounded" type="text" style="width:15em;" name="content">
+      </form>
+      <br>
+      <br>
+      <ul>
+         {% for music_item in all_music_items %}
+         <li>{{ music_item.content }}
+            <a href="/deleteMusic/{{music_item.id}}/"><i class="fa fa-check" aria-hidden="true"></i></a>
+         </li>
+         {% endfor %}
+      </ul>
+   </div>
+   <div class="grid-item">
+      <h2 class="title is-4">Courses</h2>
+      <form action="/addCourse/" method="post">{% csrf_token %}
+         <input class="input is-rounded" type="text" style="width:15em;" name="content">
+      </form>
+      <br>
+      <br>
+      <ul>
+         {% for course_item in all_course_items %}
+         <li>{{ course_item.content }}
+            <a href="/deleteCourse/{{course_item.id}}/"><i class="fa fa-check" aria-hidden="true"></i></a>
+         </li>
+         {% endfor %}
+      </ul>
+   </div>
+</div>
+{% endblock %}
